@@ -394,3 +394,30 @@ h6 {
 h6 {
   margin-bottom: 0.45rem !important;
 }
+
+/* === Fix long equations with MathJax === */
+
+.callout[data-callout="eq1"],
+.callout[data-callout="eq2"],
+.callout[data-callout="eq3"],
+.callout[data-callout="row"] {
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+}
+
+.callout[data-callout="eq1"] .callout-content,
+.callout[data-callout="eq2"] .callout-content,
+.callout[data-callout="eq3"] .callout-content,
+.callout[data-callout="row"] .callout-content {
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+}
+
+mjx-container[display="true"] {
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  padding-bottom: 0.25rem !important;
+}
