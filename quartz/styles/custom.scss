@@ -1,3 +1,396 @@
 @use "./variables.scss" as *;
 
 // put your custom CSS here!
+/*============================================================================*/
+/* Formula block wrapper */
+.callout[data-callout="formula"] {
+  margin: 0.3em auto; /* reduce vertical space around block */
+  padding: 0.0em 0.0em; /* tighter block padding */
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.0); /* forth parameter is for opacity */
+  border: 1px solid rgba(0, 0, 0, 0.0); /* subtle border */
+  text-align: center;
+  --callout-icon: none;
+}
+.callout[data-callout="formula"] .callout-title {
+  display: none;
+}
+
+.callout[data-callout="formula"] .callout-content {
+  display: grid; /* let content stack naturally */
+  align-items: center;
+  gap: 0.25rem; /*gap between rows*/
+  padding: 0;
+}
+/*============================================================================*/
+
+/*============================================================================*/
+/* Plain centered text (no box) */
+.callout[data-callout="centered"] {
+  display: inline-flex;
+  padding: 0 ;
+  margin: 0 0.4em ;
+  background: transparent ;
+  border: none ;
+  box-shadow: none ;
+  --callout-icon: none;
+}
+.callout[data-callout="centered"] .callout-title {
+  display: none ;
+}
+.callout[data-callout="centered"] .callout-content {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 ;
+  line-height: 1 ;
+}
+/*============================================================================*/
+
+/*============================================================================*/
+/*====================================================*/
+/* Shared equation box behavior for eq1 / eq2 / eq3 */
+
+.callout[data-callout="eq1"],
+.callout[data-callout="eq2"],
+.callout[data-callout="eq3"] {
+  --eq-margin-y: 0.2em;
+  --eq-margin-x: 0.0em;
+  --eq-padding-y: 0.2em;
+  --eq-padding-x: 0.2em;
+  --eq-radius: 8px;
+
+  display: inline-flex !important;
+  width: fit-content !important;
+  max-width: 100%;
+  margin: var(--eq-margin-y) var(--eq-margin-x) !important;
+  padding: 0 !important;
+  border-radius: var(--eq-radius);
+  box-shadow: none !important;
+  --callout-icon: none;
+}
+
+.callout[data-callout="eq1"] .callout-title,
+.callout[data-callout="eq2"] .callout-title,
+.callout[data-callout="eq3"] .callout-title {
+  display: none !important;
+}
+
+.callout[data-callout="eq1"] .callout-content,
+.callout[data-callout="eq2"] .callout-content,
+.callout[data-callout="eq3"] .callout-content {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: fit-content !important;
+  padding: var(--eq-padding-y) var(--eq-padding-x) !important;
+  line-height: 1 !important;
+}
+
+.callout[data-callout="eq1"] .callout-content > p,
+.callout[data-callout="eq2"] .callout-content > p,
+.callout[data-callout="eq3"] .callout-content > p {
+  margin: 0 !important;
+}
+
+.callout[data-callout="eq1"] mjx-container,
+.callout[data-callout="eq2"] mjx-container,
+.callout[data-callout="eq3"] mjx-container {
+  margin: 0 !important;
+}
+
+/*====================================================*/
+/* Individual styles */
+
+.callout[data-callout="eq1"] {
+  background-color: #eef4ff;
+  border: 2px solid rgba(0, 0, 0, 0.8);
+}
+
+.callout[data-callout="eq2"] {
+  background-color: rgba(128, 128, 128, 0.10);
+  border: 2px solid rgba(0, 0, 0, 0.10);
+}
+
+.callout[data-callout="eq3"] {
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.30);
+}
+/*============================================================================*/
+
+
+/*============================================================================*/
+/* Parameter panel below the equations */
+.callout[data-callout="params"] {
+  display: inline-flex ;
+  flex-direction: column ;
+  align-items: stretch ;
+  text-align: left ;
+  max-width: 95% ;
+  margin: 0.3em ;
+  padding: 0.35em 0.6em ;
+  border-radius: 8px;
+  background: rgba(128, 128, 128, 0.04) ;
+  border: 1px solid rgba(128, 128, 128, 0.18) ;
+  --callout-icon: none;
+}
+
+.callout[data-callout="params"] .callout-title {
+  padding: 0 0.2em 0 0 ;
+  font-size: 0.83em;
+  color: var(--text-muted) ;
+  background: transparent ;
+}
+
+.callout[data-callout="params"] .callout-content {
+  width: 100% ;
+  padding: 0.1em 0 0 0 ;
+  font-size: 0.88em;
+  color: var(--text-muted) ;
+  gap: 0.2em;
+  justify-items: start ;
+  align-items: start ;
+  text-align: left ;
+  margin: 0 ;
+}
+/*============================================================================*/
+
+/*============================================================================*/
+/* Lowkey collapsible derivation / proof block */
+.callout[data-callout="derivation"] {
+  max-width: 95%;
+  margin: 0.35em auto;
+  border-radius: 6px;
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: none;
+  --callout-icon: none;
+}
+
+.callout[data-callout="derivation"] .callout-title {
+  padding: 0.3em 0.6em;
+  font-weight: 500;
+  font-size: 0.88em;
+  color: var(--text-faint);
+  background: transparent;
+  border-bottom: none;
+}
+
+.callout[data-callout="derivation"] .callout-content {
+  padding: 0.1em 0.6em 0.45em 0.6em;
+  text-align: left;
+  line-height: 1.35;
+}
+
+/*============================================================================*/
+
+
+.callout.theorem-callout.theorem-callout-remark .callout-title {
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+.callout.theorem-callout.theorem-callout-remark .callout-title-inner {
+  width: 100% !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 0 !important;
+  text-align: center !important;
+}
+
+.callout.theorem-callout.theorem-callout-remark .theorem-callout-subtitle {
+  margin-left: 0 !important;
+}
+
+.callout.theorem-callout.theorem-callout-remark .theorem-callout-subtitle::before {
+  content: ": " !important;
+}
+
+.callout.theorem-callout.theorem-callout-remark .theorem-callout-subtitle::after {
+  content: "" !important;
+}
+
+/* hide literal parentheses if theme/plugin inserts them as separate pieces */
+.callout.theorem-callout.theorem-callout-remark .theorem-callout-subtitle-prefix,
+.callout.theorem-callout.theorem-callout-remark .theorem-callout-subtitle-suffix {
+  display: none !important;
+}
+
+.callout[data-callout-metadata*="centered"] {
+  display: block !important;
+  width: fit-content;
+  max-width: 100%;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.callout[data-callout="centered"] {
+  display: block !important;
+  width: fit-content;
+  max-width: 100%;
+  margin-left: 0 auto !important;
+  margin-right: 0 auto !important;
+  background-color: rgb(255, 255, 255);
+}
+
+.markdown-preview-view p {
+  text-align: justify;
+}
+
+.markdown-source-view.mod-cm6 .cm-line {
+  text-align: justify;
+}
+
+/* Row container for equations */
+.callout[data-callout="row"] {
+  display: flex !important; /* full-width container so inner content can center */
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 0 !important;
+  margin: 0.25em auto !important; /* vertical spacing around rows */
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  --callout-icon: none;
+}
+
+.callout[data-callout="row"] .callout-title {
+  display: none !important;
+}
+
+.callout[data-callout="row"] .callout-content {
+  display: inline-flex !important;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+/* IEEE-style heading rules for Obsidian */
+
+/* File title styled like H1 */
+.inline-title {
+  display: block !important;
+  width: fit-content;
+  max-width: 100%;
+  margin: 1.2rem auto 1.4rem auto !important;
+  padding: 0.45rem 1.2rem !important;
+
+  background: linear-gradient(135deg, #1f1f1f, #353535) !important;
+  color: white !important;
+
+  border-radius: 14px !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18) !important;
+
+  text-align: center !important;
+  font-size: 2.2rem !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  line-height: 1.05 !important;
+}
+
+.markdown-preview-section h1,
+h1 {
+  display: block !important;
+  color: var(--text-normal) !important;
+  text-align: center !important;
+  font-size: 2.2rem !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  margin: 2rem 0 1rem 0 !important;
+  line-height: 1.05 !important;
+}
+
+.markdown-preview-section h2,
+h2 {
+  display: block !important;
+  color: var(--text-normal) !important;
+  text-transform: uppercase !important;
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  margin: 1.5rem 0 0.75rem 0 !important;
+  letter-spacing: 0.05em !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.18) !important;
+  padding-bottom: 0.35rem !important;
+}
+
+.markdown-preview-section h3,
+h3 {
+  display: block !important;
+  color: var(--text-normal) !important;
+  font-size: 0.98rem !important;
+  font-weight: 700 !important;
+  margin: 1.25rem 0 0.6rem 0 !important;
+  text-transform: none !important;
+}
+
+.markdown-preview-section h4,
+h4 {
+  display: block !important;
+  color: var(--text-normal) !important;
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
+  font-style: italic !important;
+  margin: 1rem 0 0.5rem 0 !important;
+}
+
+.markdown-preview-section h5,
+h5 {
+  display: block !important;
+  color: var(--text-muted) !important;
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+  margin: 0.9rem 0 0.4rem 0 !important;
+}
+
+.markdown-preview-section h6,
+h6 {
+  display: block !important;
+  color: var(--text-faint) !important;
+  font-size: 0.82rem !important;
+  font-weight: 500 !important;
+  margin: 0.8rem 0 0.35rem 0 !important;
+}
+
+.subsection-title-4,
+h5 {
+  font-size: 0.98rem !important;
+  font-weight: 600 !important;
+  background: var(--title-bg-4) !important;
+}
+
+.subsection-title-5,
+h6 {
+  font-size: 0.92rem !important;
+  font-weight: 600 !important;
+  background: var(--title-bg-5) !important;
+}
+
+/* Tight spacing + consistent line height */
+.subsection-title-1,
+.subsection-title-2,
+.subsection-title-3,
+.subsection-title-4,
+.subsection-title-5,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.2 !important;
+}
+
+/* Optional smaller caption spacing */
+.subsection-title-5,
+h6 {
+  margin-bottom: 0.45rem !important;
+}
