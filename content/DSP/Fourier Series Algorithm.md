@@ -281,8 +281,12 @@ The reason we stop at $\frac{N}{2}-1$ is that $k=0$ is already the DC term, and 
 Also, the terms above $\frac{N}{2}$ do not create new independent frequencies. They fold back and combine with the lower frequencies., which is why there are not values of $k$ above $\frac{N}{2}-1$.
 
 For example, $k=N-1$ combines with $k=1$ as we can see with the cosine and sine terms:
-$$\cos\left(\frac{(N-1)2\pi}{N}n\right)=\cos\left(2\pi n-\frac{2\pi}{N}n\right)=\cos\left(\frac{2\pi}{N}n\right)$$
-$$\sin\left(\frac{(N-1)2\pi}{N}n\right)=\sin\left(2\pi n-\frac{2\pi}{N}n\right)=-\sin\left(\frac{2\pi}{N}n\right)$$
+$$
+\cos\left(\frac{(N-1)2\pi}{N}n\right)=\cos\left(2\pi n-\frac{2\pi}{N}n\right)=\cos\left(\frac{2\pi}{N}n\right)
+$$
+$$
+\sin\left(\frac{(N-1)2\pi}{N}n\right)=\sin\left(2\pi n-\frac{2\pi}{N}n\right)=-\sin\left(\frac{2\pi}{N}n\right)
+$$
 
 So $k=N-1$ is not a new frequency. It is the same cosine component as $k=1$, but with the opposite sine component.
 
@@ -291,28 +295,44 @@ That is why we only keep the normal frequency range: $1\leq k\leq\frac{N}{2}-1$.
 Now we need to see exactly how those terms combine together.
 
 1. The important pair is:
-   $$k=r \quad \text{and} \quad k=N-r$$
+   $$
+   k=r \quad \text{and} \quad k=N-r
+   $$
    where $r$ is one of the other terms frequency indexes:
-   $$1\leq r\leq\frac{N}{2}-1$$
+   $$
+   1\leq r\leq\frac{N}{2}-1
+   $$
 
 2. First, look at the cosine for $k=N-r$ and compare it to the cosine for $k=r$:
-   $$\cos\left(\frac{k\cdot2\pi}{N}n\right) = \cos\left(\frac{(N-r)2\pi}{N}n\right) = \cos\left(2\pi n-\frac{r2\pi}{N}n\right) = \cos\left(\frac{r2\pi}{N}n\right)$$
+   $$
+   \cos\left(\frac{k\cdot2\pi}{N}n\right) = \cos\left(\frac{(N-r)2\pi}{N}n\right) = \cos\left(2\pi n-\frac{r2\pi}{N}n\right) = \cos\left(\frac{r2\pi}{N}n\right)
+   $$
    So:
-   $$\cos\left(\frac{(N-r)2\pi}{N}n\right)=\cos\left(\frac{r2\pi}{N}n\right)$$
+   $$
+   \cos\left(\frac{(N-r)2\pi}{N}n\right)=\cos\left(\frac{r2\pi}{N}n\right)
+   $$
 
 3. Now look at the sine for $k=N-r$ and compare it to the sine for $k=r$:
-   $$\sin\left(\frac{k\cdot2\pi}{N}n\right) = \sin\left(\frac{(N-r)2\pi}{N}n\right)=\sin\left(2\pi n-\frac{r2\pi}{N}n\right) = -\sin\left(\frac{r2\pi}{N}n\right)$$
+   $$
+   \sin\left(\frac{k\cdot2\pi}{N}n\right) = \sin\left(\frac{(N-r)2\pi}{N}n\right)=\sin\left(2\pi n-\frac{r2\pi}{N}n\right) = -\sin\left(\frac{r2\pi}{N}n\right)
+   $$
    This time, the sine changes sign:
-   $$\sin\left(2\pi n-\frac{r2\pi}{N}n\right)=-\sin\left(\frac{r2\pi}{N}n\right)$$
+   $$
+   \sin\left(2\pi n-\frac{r2\pi}{N}n\right)=-\sin\left(\frac{r2\pi}{N}n\right)
+   $$
 
-4. Therefore:
+5. Therefore:
 > [!row|centered]
 > 
 > > [!eq3|centered]  
-> > $$\cos\left(\frac{(N-r)2\pi}{N}n\right)=\cos\left(\frac{r2\pi}{N}n\right)$$
+> > $$
+> > \cos\left(\frac{(N-r)2\pi}{N}n\right)=\cos\left(\frac{r2\pi}{N}n\right)
+> > $$
 > 
 > > [!eq3|centered]  
-> > $$\sin\left(\frac{(N-r)2\pi}{N}n\right)=-\sin\left(\frac{r2\pi}{N}n\right)$$
+> > $$
+> > \sin\left(\frac{(N-r)2\pi}{N}n\right)=-\sin\left(\frac{r2\pi}{N}n\right)
+> > $$
 
 This means:
 
@@ -321,26 +341,38 @@ This means:
 So their cosine coefficients add. But their sine coefficients subtract.
 
 If we observe only those two terms inside the infinite sampled Fourier series:
-$$x[n]=\cdots+\left[a_r\cos\left(\frac{r2\pi}{N}n\right)+b_r\sin\left(\frac{r2\pi}{N}n\right)\right]+\cdots+\left[a_{N-r}\cos\left(\frac{(N-r)2\pi}{N}n\right)+b_{N-r}\sin\left(\frac{(N-r)2\pi}{N}n\right)\right]+\cdots$$
+$$
+x[n]=\cdots+\left[a_r\cos\left(\frac{r2\pi}{N}n\right)+b_r\sin\left(\frac{r2\pi}{N}n\right)\right]+\cdots+\left[a_{N-r}\cos\left(\frac{(N-r)2\pi}{N}n\right)+b_{N-r}\sin\left(\frac{(N-r)2\pi}{N}n\right)\right]+\cdots
+$$
 Using the identities above:
 > [!eq3|centered]  
-> $$x[n]=\cdots+\left[(a_r+a_{N-r})\cos\left(\frac{r2\pi}{N}n\right)+(b_r-b_{N-r})\sin\left(\frac{r2\pi}{N}n\right)\right]+\cdots$$
+> $$
+> x[n]=\cdots+\left[(a_r+a_{N-r})\cos\left(\frac{r2\pi}{N}n\right)+(b_r-b_{N-r})\sin\left(\frac{r2\pi}{N}n\right)\right]+\cdots
+> $$
 
 So the term $k=N-r$ does not need its own separate frequency in the final equation, it gets absorbed into the lower frequency term $k=r$.
 
 Now we also need to remember that frequencies repeat every $N$. So $k$, $k+N$, $k+2N$, etc. all create the same discrete-time frequency. This means that for each normal frequency $k$, we must group:
- $$k,\quad k+N,\quad k+2N,\quad \dots$$
+ $$
+ k,\quad k+N,\quad k+2N,\quad \dots
+ $$
 and also the matching folded terms:
-$$N-k,\quad N-k+N,\quad N-k+2N,\quad \dots$$
+$$
+N-k,\quad N-k+N,\quad N-k+2N,\quad \dots
+$$
 Therefore, for all normal terms, the grouped coefficients are:
 
 > [!row|centered]
 > 
 > > [!eq2|centered]  
-> > $$\tilde{a}_k=\sum_{m=0}^{\infty}\left(a_{k+mN}+a_{N-k+mN}\right)$$
+> > $$
+> > \tilde{a}_k=\sum_{m=0}^{\infty}\left(a_{k+mN}+a_{N-k+mN}\right)
+> > $$
 > 
 > > [!eq2|centered]  
-> > $$\tilde{b}_k=\sum_{m=0}^{\infty}\left(b_{k+mN}-b_{N-k+mN}\right)$$
+> > $$
+> > \tilde{b}_k=\sum_{m=0}^{\infty}\left(b_{k+mN}-b_{N-k+mN}\right)
+> > $$
 
 These equations say:
 > All continuous-time harmonics that become the same discrete-time frequency are grouped into one discrete-time coefficient.
@@ -357,7 +389,9 @@ The finite real discrete Fourier series is:
 > [!row|centered]
 > 
 > > [!eq2|centered]  
-> > $$x[n]=\underbrace{\tilde{a}_0}_{\text{DC component}}+\underbrace{\sum_{k=1}^{N/2-1}\left[\tilde{a}_k\cos\left(\frac{k\cdot2\pi}{N}n\right)+\tilde{b}_k\sin\left(\frac{k\cdot2\pi}{N}n\right)\right]}_{\text{Other terms sine/cosine components }(1\leq k\leq\frac{N}{2}-1)}+\underbrace{\tilde{a}_{N/2}\cos(\pi n)}_{\text{Nyquist component}}$$
+> > $$
+> > x[n]=\underbrace{\tilde{a}_0}_{\text{DC component}}+\underbrace{\sum_{k=1}^{N/2-1}\left[\tilde{a}_k\cos\left(\frac{k\cdot2\pi}{N}n\right)+\tilde{b}_k\sin\left(\frac{k\cdot2\pi}{N}n\right)\right]}_{\text{Other terms sine/cosine components }(1\leq k\leq\frac{N}{2}-1)}+\underbrace{\tilde{a}_{N/2}\cos(\pi n)}_{\text{Nyquist component}}
+> > $$
 > 
 > Real Discrete Fourier Series with finite bounds  
 > ^finite-real-dfs-equation
@@ -417,7 +451,9 @@ The Nyquist cosine also has zero average:
 > $$
 
 This happens because:
-$$\cos(\pi n)=(-1)^n = 1-1+1-1+\dots =0 \quad | \quad n\text{ is even, so it cancel to 0}$$
+$$
+\cos(\pi n)=(-1)^n = 1-1+1-1+\dots =0 \quad | \quad n\text{ is even, so it cancel to 0}
+$$
 For products, the useful facts are:
 
 > [!row|centered]
