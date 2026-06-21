@@ -182,6 +182,34 @@
   line-height: 1.35;
 }
 
+/* === Force collapsed derivation callouts to take zero space === */
+
+.callout[data-callout="derivation"].is-collapsed .callout-content,
+.callout[data-callout="derivation"][data-callout-fold="-"] .callout-content,
+.callout[data-callout="derivation"] .callout-content[hidden] {
+  display: none !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* === Force collapsed derivation callouts to take zero space === */
+
+.callout[data-callout="hypothesis"].is-collapsed .callout-content,
+.callout[data-callout="hypothesis"][data-callout-fold="-"] .callout-content,
+.callout[data-callout="hypothesis"] .callout-content[hidden] {
+  display: none !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
 /*============================================================================*/
 
 

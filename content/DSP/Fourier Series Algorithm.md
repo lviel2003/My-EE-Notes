@@ -466,7 +466,7 @@ For products, the useful facts are:
 
 ---
 
-> [!hypothesis|*]- Proof for the Finite Coefficients of the Real DFS  
+> [!derivation|*]- Proof for the Finite Coefficients of the Real DFS  
 > For each coefficient, the logic is always the same.
 > 
 > 1. Start from the [[#^finite-real-dfs-equation|finite real DFS equation]]
